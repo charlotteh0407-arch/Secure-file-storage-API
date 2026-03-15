@@ -11,7 +11,7 @@ cryptography
 SQLite / PostgreSQL
 
 Architecture: (what happend when a client uploads a file)
-```
+```mermaid
 flowchart TB
   A[Client]-->| 1. Upload File Request| B[FastAPI API]
   B--> C[2. User Authentication]
