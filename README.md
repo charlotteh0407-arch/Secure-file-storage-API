@@ -20,3 +20,25 @@ flowchart TB
   E --> F[5. Save Metadata with SQLAlchemy]
   F --> G[(Database)]
 ```
+Instalation Instructions
+
+git clone "" paste URL for repository""
+cd secure-file-storage-api
+
+python -m venv .venv
+.venv\Scripts\activate
+
+pip install -r requirments.txt
+
+Run the Server
+uvicorn app.main:app --reload
+Open:
+http://127.0.0.1:8000/docs
+
+Security Features
+  - password hashing using bcrypt
+  - JWT authentication
+  - Encrypted file storage
+  - User ownership validation
+  - Secure API endpoints
+
