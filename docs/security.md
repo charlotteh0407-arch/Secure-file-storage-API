@@ -8,14 +8,13 @@ Security is an essential feature of a file stoarge system beacuse of the many cy
 
 Each asset has its own threat each with the goal of gaining access to the system. I have assessed the assets and given the threats that it may face and the mitigattion for each threat.
 
-Assets                      Threats                         Mitigation
-User Accounts               Password theft                  Authentication - Hashing passwords
-Uploaded files              Unautharised access             Authorization - Admin controls
-API                         Abuser by unautherised users    Authorization - Admin controls
-Database                    Data Leak                       Hashing and salting passwords, file content not
-                                                            saved on database only metadata
-Storage Folder              Direct file access              Files encrypted at rest, filenames replaced with
-                                                            ID.
+| Assets | Threats | Mitigation |
+|---|---|---|
+| User Accounts | Password theft | Authentication - Hashing passwords |
+| Uploaded files | Unautharised access | Authorization - Admin controls |
+| API | Abuser by unautherised users | Authorization - Admin controls |
+| Database | Data Leak | Hashing and salting passwords, file content not saved on database only metadata |
+| Storage Folder | Direct file access | Files encrypted at rest, filenames replaced with ID. |
 
 ## Authentication
 
@@ -40,13 +39,14 @@ Validating Extensions - Strict list of allowed file extensions so executable scr
 ## Security Limitations
 This project currently does not include:
 
-Assets                                  Impacts
-Rate Limiting                           System is left vunerable to brute force attacks and credential surfing
-Multi-factor Authentication             Attackers can gain quick access to accounts by brute force attacks, credential surfing, and users are vunerable to phishing scam where they input passwords
-Antivirus scanning of uploded files     Bad files containing malicious software, ransomeware and spyware can be uploded
-Audit Logging                           Can lead to undetected breaches, and data breaches cannot be investogated
-HTTPS deployment                        The file manager cannot be accessed via a website, inconvenient for users
-Cloud Key Managment                     No key control, cannot change keys quickly if a leak happens.
+| Assets | Impacts |
+|---|---|
+| Rate Limiting | System is left vunerable to brute force attacks and credential surfing |
+| Multi-factor Authentication | Attackers can gain quick access to accounts by brute force attacks, credential surfing, and users are vunerable to phishing scam where they input passwords |
+| Antivirus scanning of uploded files | Bad files containing malicious software, ransomeware and spyware can be uploded |
+| Audit Logging | Can lead to undetected breaches, and data breaches cannot be investogated |
+| HTTPS deployment | The file manager cannot be accessed via a website, inconvenient for users |
+| Cloud Key Managment | No key control, cannot change keys quickly if a leak happens. |
 
 All these features would be a good addition to the project to imporve it and increase its security.
 
