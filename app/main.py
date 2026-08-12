@@ -1,12 +1,12 @@
 from fastapi import FastAPI
+from app.database import engine, Base
+from app import models
 
 app = FastAPI()
 
 @app.get("/")
-def read_root():
+def health_check():
     return {"message": "Secure File Storage API is running"}
 
-from app.database import engine, base
-from app import models
 
-base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
