@@ -25,9 +25,16 @@ def hash_password(password: str) -> str:
     hash_password = bcrypt.hashpw(password_bytes, salt)
     return hash_password.decode('utf-8')
 
-def verify_password(user_password: str, hashed_password: str) -> str:
+def verify_password(user_password: str, hashed_password: str) -> bool:
     """
     check the users inputed password is matches the saved password
+    Parameters:
+    user_password - the password the users logging in wit
+    hashes_password - hashed password from the db
+
+    Returns:
+    True if passwords match
+    false if passwords do not match
     """
 
     result = bcrypt.checkpw(user_password.encode('utf-8'), hashed_password.encode('utf-8') )
