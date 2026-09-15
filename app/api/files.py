@@ -13,6 +13,7 @@ from app.Logic.validation import (
     validate_file_extension,
     generate_storage_key,
 )
+from app.storage.local import save_encrypted_file
 
 router = APIRouter()
 
@@ -30,26 +31,19 @@ async def upload_file(file: UploadFile, current_user: User = Depends(get_current
     extension = get_file_extension(file.filename)
 
     plaintext_bytes = await file.read()
-
-    size_in_MB = len(plaintext_bytes) / (1024*1024)
-    if size_in_MB > 25:
-        raise HTTPException(
-            status_code=400,
-            detail= "File is too big"
-        )
-
+    validate_file_size(plaintext_bytes)
     validate_file_content(plaintext_bytes, extension)
 
     storage_key = generate_storage_key(extension)
-
     encrypted_bytes = encrypt_file(ENCRYPTION_KEY, plaintext_bytes)
+    save_encrypted_file(storage_key, encrypted_bytes)
 
     new_file = FileModel(
-        owner_id = current_user.id
-        original_filename = file.filename
-        storage_key = storage_key
-        size = len(plaintext_bytes)
-        mime_type = file.content_type
+        owner_id = current_user.id,
+        original_filename = file.filename,
+        storage_key = storage_key,
+        size = len(plaintext_bytes),
+        mime_type = file.content_type,
     )
 
     db.add(new_file)
