@@ -42,3 +42,31 @@ Security Features
   - User ownership validation
   - Secure API endpoints
 
+# Running Tests
+
+This project uses pytest for autometed testing. The tests cover models, authentication, encryption, file validation, and the full set of API endpoints.
+
+Setup:
+Install pytest
+Command:
+pip install pytest
+
+Running all tests:
+Command;
+pytest tests/ -v
+
+The -v flag shows each test name and if it passes of failed, rather than a summart count
+
+Runniong Specific tests:
+Command:
+pytest tests/test_files.py -v
+
+Test files:
+| File | Covers |
+| --- | --- |
+| test_models.py | User and File database models, relationships, constraints |
+| test_auth.py | Password hashing, JWT creation/ verification, get_current_user |
+| test_endpoints.py | /register and /login endpoints |
+| test_encryption.py | AES file encryption and decryption |
+| test_upload.py | File validation (size, extension, content signiture) and POST/files/upload |
+| test_files.py | GET /files, GET /files/{id}, DELETE /files/{id}, including cross-user ownership checks |
