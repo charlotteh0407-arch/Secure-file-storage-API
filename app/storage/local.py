@@ -9,4 +9,8 @@ def save_encrypted_file(storage_key: str, encrypted_bytes: bytes) -> None:
 
     with open(file_path, mode="wb") as f:
         f.write(encrypted_bytes)
-        
+
+def read_encrypted_file(storage_key: str) -> bytes:
+    file_path = os.path.join(STORAGE_DIR, storage_key)
+    with open(file_path, mode="rb") as f:
+        return f.read()
