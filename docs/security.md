@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Security is an essential feature of a file stoarge system beacuse of the many cyber threats that it may face. The system holds sensitive information including users login details e.g. hashed passwords and email addresses and private data within files. These are desirable peices of information for hackers as they are valuable to sell or the system could be vunerable to ransomware attacks. During evey stage of development secuirity was considered and incorporated within the design. For example the layered architecture seen in the arcitecture.md was chosen partly to to support secuity design.
+Security is an essential feature of a file stoarge system beacuse of the many cyber threats that it may face. The system holds sensitive information including users login details e.g. hashed passwords and email addresses and private data within files. These are desirable peices of information for hackers as they are valuable to sell or the system could be vunerable to ransomware attacks. During evey stage of development secuirity was considered and incorporated within the design. For example the layered architecture seen in the arcitecture.md was chosen partly to support secuity design.
 
 ## Threat model
 
