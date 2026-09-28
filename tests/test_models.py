@@ -56,7 +56,7 @@ class TestUserModel:
 
         assert user.created_at is not None
 
-    def test_duplicate_email_is_rejected_but_database(self, db_session):
+    def test_duplicate_email_is_rejected_by_database(self, db_session):
         user1 = User(
             email= "duplicate_email@test.example",
             hashed_password="fakehash"
@@ -65,7 +65,7 @@ class TestUserModel:
         db_session.commit()
 
         user2 = User(
-            email="uplicate_email@test.example",
+            email="duplicate_email@test.example",
             hashed_password="differenthashpassword"
         )
         db_session.add(user2)

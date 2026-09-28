@@ -28,7 +28,7 @@ def setup_and_teardown():
     client.post("/register", json={"email": USER_A_EMAIL, "password": TEST_PASSWORD})
     client.post("/register", json={"email": USER_B_EMAIL, "password": TEST_PASSWORD})
 
-    login_a = client.post("/login", josn={"email": USER_A_EMAIL, "password": TEST_PASSWORD})
+    login_a = client.post("/login", json={"email": USER_A_EMAIL, "password": TEST_PASSWORD})
     login_b = client.post("/login", json={"email": USER_B_EMAIL, "password": TEST_PASSWORD})
 
     global headers_a, headers_b
@@ -42,7 +42,7 @@ def setup_and_teardown():
         user = db.query(User).filter(User.email == email).first()
         if user:
             db.query(FileModel).filter(FileModel.owner_id == user.id).delete()
-            db.query(User).filter(User.email == email).delete
+            db.query(User).filter(User.email == email).delete()
         db.commit()
         db.close()
 

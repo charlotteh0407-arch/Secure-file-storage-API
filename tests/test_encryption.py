@@ -17,7 +17,7 @@ class TestEncryption:
         original = b"Same content both times"
         encrypted_1 = encrypt_file(ENCRYPTION_KEY, original)
         encrypted_2 = encrypt_file(ENCRYPTION_KEY, original)
-        assert encrypted_1 == encrypted_2
+        assert encrypted_1 != encrypted_2
 
     def test_both_encrypted_versions_decrypt_correctly(self):
         original = b"Same content both times"
