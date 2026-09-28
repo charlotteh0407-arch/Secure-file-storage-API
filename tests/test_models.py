@@ -5,7 +5,7 @@ from app.models.user import User
 
 @pytest.fixture
 def db_session():
-    Base.metatdata.create_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
     session = SessionLocal()
     yield session
 
@@ -76,7 +76,7 @@ class TestUserModel:
         db_session.rollback()
 
 class TestFileModel:
-    def test_can_create_a_file_linked_to_a_user():
+    def test_can_create_a_file_linked_to_a_user(self, db_session):
         user = User(
             email="file_owner@test.example",
             hashed_password="fakehash"

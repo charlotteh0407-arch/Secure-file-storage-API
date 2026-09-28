@@ -16,7 +16,7 @@ def db_session():
     so tests don't leave junk behind or interfere with each other"""
 
     Base.metadata.create_all(bind=engine)
-    session = SessionLocal
+    session = SessionLocal()
     yield session
     session.query(User).filter(User.email.like("%@test.example%")).delete(
         synchronize_session=False
@@ -66,7 +66,7 @@ class TestJWT:
         token = create_access_token(1)
         payload = decode_access_token(token)
         assert payload is not None
-        assert payload["sub"] == "!"
+        assert payload["sub"] == "1"
 
     def test_decode_access_token_users_get_different_tokens(self):
         token_1 = create_access_token(1)

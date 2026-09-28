@@ -6,7 +6,7 @@ class TestEncryption:
         original = b"File Content"
         encrypted = encrypt_file(ENCRYPTION_KEY, original)
         decrypted = decode_file(ENCRYPTION_KEY, encrypted)
-        assert encrypted == decrypted
+        assert original == decrypted
 
     def test_encrypted_file_is_not_the_same_as_plaintext(self):
         original = b"File Content"
