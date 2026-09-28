@@ -18,7 +18,7 @@ def clean_test_user():
     needing to be requested explicitly.
     """
 
-    Base.metedata.create_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     db.query(User).filter(User.email == TEST_EMAIL).delete()
     db.commit()
