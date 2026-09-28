@@ -16,7 +16,7 @@ ALLOWED_FILE_EXTENSIONS = tuple(FILE_SIGNATURES.keys())
 def get_file_extension(file_name) -> str:
 
     split_up = os.path.splitext(file_name)
-    file_extension = split_up[1].lstrip(".")
+    file_extension = split_up[1].lstrip(".").lower()
     return file_extension
 
 def validate_file_size(file_bytes: bytes) -> bool:
