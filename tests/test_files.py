@@ -65,7 +65,7 @@ class TestListFiles:
     def test_returns_empty_list_when_user_has_no_files(self):
         response = client.get("/files", headers=headers_a)
         assert response.status_code == 200
-        assert response.jspm() == []
+        assert response.json() == []
 
     def test_returns_only_the_current_users_files(self):
         _upload_a_file(headers_a, "a_file_1.pdf")
@@ -162,7 +162,7 @@ class TestDeleteFile:
         file_id = _upload_a_file(headers_a)
         db = SessionLocal()
         file_record = db.query(FileModel).filter(FileModel.id == file_id).first()
-        storage_key = file_record.storage_keydb.close()
+        storage_key = file_record.storage_key.close()
         db.close()
 
         client.delete(f"/files/{file_id}", headers=headers_a)
