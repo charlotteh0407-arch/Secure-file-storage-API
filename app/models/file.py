@@ -6,7 +6,7 @@ from app.database import Base
 class File(Base):
     __tablename__ = "files"
     id = Column(Integer, primary_key=True, index=True)
-    owner_id = Column(Integer, ForeignKey("Users.id"), nullable=False)
+    owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     original_filename = Column(String, nullable=False)
     storage_key = Column(String, unique=True, nullable=False)
     size = Column(Integer, nullable=False)
