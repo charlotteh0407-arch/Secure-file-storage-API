@@ -13,21 +13,17 @@ FILE_SIGNATURES = {
 }
 ALLOWED_FILE_EXTENSIONS = tuple(FILE_SIGNATURES.keys())
 
-def calc_file_size(file) -> float:
-    file_size_in_MB = os.path.getsize(file)/ (1024*1024) # Will need to be re-worked after as the upload file will not be saved yet, therefore have no path
-    return file_size_in_MB
-
 def get_file_extension(file_name) -> str:
 
-    split_tup = os.path.splitext(file_name)
-    file_extension = split_tup[1].lstrip(".")
+    split_up = os.path.splitext(file_name)
+    file_extension = split_up[1].lstrip(".")
     return file_extension
 
-def validate_file_size(file) -> bool:
+def validate_file_size(file_bytes: bytes) -> bool:
 
-    file_size = calc_file_size(file)
+    size_in_MB = len(file_bytes) / (1024*1024)
 
-    if file_size > MAX_FILE_SIZE:
+    if size_in_MB > MAX_FILE_SIZE:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="file is too big"
