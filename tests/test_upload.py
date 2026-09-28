@@ -1,4 +1,5 @@
 import os
+import io
 import pytest
 from fastapi.testclient import TestClient
 
