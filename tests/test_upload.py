@@ -36,7 +36,7 @@ class TestValidateFileExtension:
         assert validate_file_extension("photo.jpg") is True
 
     def test_rejects_an_unsupported_extension(self):
-        with pytest.rasie(Exception) as exc_info:
+        with pytest.raises(Exception) as exc_info:
             validate_file_extension("malware.exe")
             assert exc_info.value.status_code == 400
 
@@ -77,7 +77,7 @@ class TestValidateFileContent:
 class TestGenerateStorageKey:
     def test_returns_a_string_ending_in_the_given_extension(self):
         key = generate_storage_key("pdf")
-        assert key.endwith(".pdf")
+        assert key.endswith(".pdf")
 
     def test_two_calls_produce_different_keys(self):
         key_1 = generate_storage_key("pdf")
