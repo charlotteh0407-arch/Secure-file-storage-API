@@ -17,7 +17,7 @@ def _fake_pdf_bytes():
 
 @pytest.fixture(autouse=True)
 def setup_and_teardown():
-    Base.metadata.create_All(bind=engine)
+    Base.metadata.create_all(bind=engine)
 
     db = SessionLocal()
     for email in (USER_A_EMAIL, USER_B_EMAIL):
