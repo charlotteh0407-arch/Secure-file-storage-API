@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException, status, Depends, UploadFile
+from fastapi import Response
 from sqlalchemy.orm import Session
 from datetime import datetime, timezone
 
@@ -102,7 +103,7 @@ def get_file(file_id: int, current_user: User = Depends(get_current_user), db: S
 
     return Response(content=decrytped_bytes, media_type=file.mime_type)
 
-@router.delete("/file/{file_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/files/{file_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_file(file_id: int, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     file = (
         db.query(FileModel)
