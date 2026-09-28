@@ -89,7 +89,7 @@ class TestFileModel:
         file = File(
             owner_id=user.id,
             original_filename = "test_filename.pdf",
-            storage_key= "test_storage_key.pdf",
+            storage_key= "test_storage_key_1.pdf",
             size=1024,
             mime_type="application/pdf",
         )
@@ -113,7 +113,7 @@ class TestFileModel:
         file = File(
         owner_id=user.id,
         original_filename = "test_filename.pdf",
-        storage_key= "test_storage_key.pdf",
+        storage_key= "test_storage_key_2.pdf",
         size=1024,
         mime_type="application/pdf",
         )
@@ -138,7 +138,7 @@ class TestFileModel:
         file = File(
             owner_id=user.id,
             original_filename = "test_filename.pdf",
-            storage_key= "test_storage_key.pdf",
+            storage_key= "test_storage_key_3.pdf",
             size=1024,
             mime_type="application/pdf",
         )
