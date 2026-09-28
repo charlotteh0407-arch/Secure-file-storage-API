@@ -99,7 +99,7 @@ class TestUploadEndpoint:
         db.commit()
         db.close()
 
-        client.post("/register", json={"email:" TEST_EMAIL, "password": TEST_PASSWORD})
+        client.post("/register", json={"email": TEST_EMAIL, "password": TEST_PASSWORD})
         login_response = client.post("/login", json={"email": TEST_EMAIL, "password": TEST_PASSWORD})
 
         self.token = login_response.json()["access_token"]
@@ -165,7 +165,7 @@ class TestUploadEndpoint:
                 )
 
             db = SessionLocal()
-            user = db.qyery(User).filter(User.email == TEST_EMAIL).first()
+            user = db.query(User).filter(User.email == TEST_EMAIL).first()
             file_record = db.query(FileModel).filter(FileModel.owner_id == user.id).first()
             db.close()
 
