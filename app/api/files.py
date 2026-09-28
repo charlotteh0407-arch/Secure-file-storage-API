@@ -85,7 +85,7 @@ def get_file(file_id: int, current_user: User = Depends(get_current_user), db: S
         db.query(FileModel)
         .filter(
             FileModel.id == file_id,
-            FileModel.Owner_id == current_user.id,
+            FileModel.owner_id == current_user.id,
             FileModel.deleted_at.is_(None),
         )
         .first()
